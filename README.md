@@ -1,4 +1,25 @@
-# Graph Edit Networks
+# Graph Edit Networks - Reproducibility Challenge
+
+This repository all the code for the purpose of the Reproducibility challenge 2021/2022.
+
+This repository contains the reference implementation of _Graph Edit Networks_
+as described in the paper
+
+* Paaßen, B., Grattarola, D., Zambon, D., Alippi, C., and Hammer, B. (2021).
+  Graph Edit Networks. Proceedings of the Ninth International Conference on
+  Learning Representations (ICLR 2021). [Link][Paa2021]
+
+```
+@inproceedings{Paassen2021ICLR,
+    title={Graph Edit Networks},
+    author={Benjamin Paaßen and Daniele Grattarola and Daniele Zambon and Cesare Alippi and Barbara Hammer},
+    booktitle={Proceedings of the Ninth International Conference on Learning Representations (ICLR 2021)},
+    editor={Shakir Mohamed and Katja Hofmann and Alice Oh and Naila Murray and Ivan Titov},
+    venue={virtual},
+    year={2021},
+    url={https://openreview.net/forum?id=dlEJsyHGeaL}
+}
+```
 
 Copyright (C) 2020-2021  
 Benjamin Paaßen  
@@ -21,26 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Introduction
 
-This repository contains the reference implementation of _Graph Edit Networks_
-as described in the paper
 
-* Paaßen, B., Grattarola, D., Zambon, D., Alippi, C., and Hammer, B. (2021).
-  Graph Edit Networks. Proceedings of the Ninth International Conference on
-  Learning Representations (ICLR 2021). [Link][Paa2021]
-
-```
-@inproceedings{Paassen2021ICLR,
-    title={Graph Edit Networks},
-    author={Benjamin Paaßen and Daniele Grattarola and Daniele Zambon and Cesare Alippi and Barbara Hammer},
-    booktitle={Proceedings of the Ninth International Conference on Learning Representations (ICLR 2021)},
-    editor={Shakir Mohamed and Katja Hofmann and Alice Oh and Naila Murray and Ivan Titov},
-    venue={virtual},
-    year={2021},
-    url={https://openreview.net/forum?id=dlEJsyHGeaL}
-}
-```
-
-In particular, this repository contains all experimental scripts, model
+This repository contains all experimental scripts, model
 implementations, datasets, and auxiliary files necessary to run the
 experiments.
 
@@ -221,7 +224,7 @@ Peano dataset.
 ## Reproducing the experiments
 
 Reproducing our experiments is possible by running the four included ipython
-notebooks.  All notebooks should run without any additional preparation.
+notebooks in `train_eval_notebooks` folder.  All notebooks should run without any additional preparation.
 Installing the dependencies listed above should suffice. Note that slight
 deviations may occur due to different sampling.
 In the remainder of this section, we list the different experiments and their
@@ -325,6 +328,9 @@ edge_del_recall: 1 +- 0
 edge_del_precision: 1 +- 0
 </pre>
 
+
+This file also contains the experiments that are described in 4.2.1 and 4.2.2.
+
 ### Tree dynamical systems
 
 `pytorch_ten.ipynb` runs a tree edit network on the two tree dynamical systems
@@ -342,57 +348,8 @@ Accuracy: 1 +- 0
 Epochs: 12768.4 +- 933.092
 </pre>
 
-`kernel_tree_time_series_prediction.ipynb` runs the kernel regression baseline
-on the two tree dynamical systems. Here, we expect the following results.
+This file also contains the experiments that are described in 4.2.3.
 
-<pre>
---- task boolean --- 
-
-repeat 1 of 5
-took 0.137753 seconds to train
-took 0.470501 seconds to predict
-RMSE: 2.41091 versus baseline RMSE 1.45774
-repeat 2 of 5
-took 0.129635 seconds to train
-took 0.469569 seconds to predict
-RMSE: 2.43812 versus baseline RMSE 1.61589
-repeat 3 of 5
-took 0.135248 seconds to train
-took 0.419243 seconds to predict
-RMSE: 2.46306 versus baseline RMSE 1.52753
-repeat 4 of 5
-took 0.130834 seconds to train
-took 0.215008 seconds to predict
-RMSE: 2 versus baseline RMSE 1.7097
-repeat 5 of 5
-took 0.131168 seconds to train
-took 0.382734 seconds to predict
-RMSE: 2.65684 versus baseline RMSE 1.59041
-
-
- --- task peano --- 
-
-repeat 1 of 5
-took 3.70749 seconds to train
-took 58.3135 seconds to predict
-RMSE: 5.38069 versus baseline RMSE 3
-repeat 2 of 5
-took 4.74174 seconds to train
-took 65.4441 seconds to predict
-RMSE: 3.96863 versus baseline RMSE 2.79322
-repeat 3 of 5
-took 3.83915 seconds to train
-took 61.2994 seconds to predict
-RMSE: 4.89415 versus baseline RMSE 3.44944
-repeat 4 of 5
-took 4.83539 seconds to train
-took 60.4223 seconds to predict
-RMSE: 3.52332 versus baseline RMSE 2.77302
-repeat 5 of 5
-took 5.58519 seconds to train
-took 88.7766 seconds to predict
-RMSE: 4.94673 versus baseline RMSE 3.19398
-</pre>
 
 ### Runtimes
 
@@ -415,6 +372,9 @@ log-fit for inference computation of const_filter model: log(y) = 1.31487 * log(
 The visualization should look roughly like this.
 
 ![A log-log plot of runtime in seconds on the y-axis versus graph size on the x axis. Orange dots describe runtimes without edge filtering, blue dots with edge filtering. Two linear fits in log-log-space describe the rough runtime behavior, revealing exponent four without edge filtering and roughly linear behavior with edge filtering.](./hep_th_runtimes.png)
+
+This file also contains the experiments that are described in 4.2.4.
+
 
 ## Contents
 
@@ -448,12 +408,6 @@ alphabetical order):
 * `hep_th_runtimes.png` : An image file displaying the runtime results obtained
   on the HEP-Th dataset.
 * `hep_th_test.py` : A unit test for `hep_th.py`.
-* `kernel_time_series_prediction.py` : An implementation of kernel time series
-  prediction for trees as proposed by [Paaßen et al., 2018][Paa2018].
-* `kernel_time_series_prediction_test.py` : A unit test for
-  `kernel_time_series_prediction.py`.
-* `kernel_tree_time_series_prediction.ipynb` : An ipython notebook to run
-  kernel time series prediction on the Boolean and Peano datasets.
 * `peano_addition.py` : A Python script generating the Peano dataset and
   its teaching protocol.
 * `peano_addition_test.py` : A unit test for `peano_addition.py`.
@@ -470,6 +424,7 @@ alphabetical order):
 * `pytorch_tree_edit_networks_test.py` : A unit test for
   `pytorch_tree_edit_networks.py`.
 * `README.md` : this file.
+* `visualisation-R_script.R` : Visualisation script.
 
 
 ## Literature
