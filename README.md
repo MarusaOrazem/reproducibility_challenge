@@ -3,7 +3,7 @@
 ## Introduction
 This repository contains all the code for the purpose of the Reproducibility challenge 2021/2022.
 
-Paper that was reproduces is the following
+Paper that was reproduced is 
 
 * Paaßen, B., Grattarola, D., Zambon, D., Alippi, C., and Hammer, B. (2021).
   Graph Edit Networks. Proceedings of the Ninth International Conference on
